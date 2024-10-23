@@ -4,6 +4,11 @@
       enable = true;
       package = pkgs.searxng;
       settings = {
+        search = {
+          safe_search = 1; # 0 = None, 1 = Moderate, 2 = Strict
+          autocomplete = "google"; # Existing autocomplete backends: "dbpedia", "duckduckgo", "google", "startpage", "swisscows", "qwant", "wikipedia" - leave blank to turn it off by default
+          default_lang = "en";
+        };
         server = {
           secret_key = "TODO_USE_SOPS_INSTEAD";
           port = 8888; # Internal port
@@ -48,4 +53,3 @@
     allowedTCPPorts = [80 443]; # For Caddy
   };
 }
-
