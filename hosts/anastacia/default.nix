@@ -1,7 +1,10 @@
-{...}: {
+{self, ...}: let
+  mod = "${self}/system";
+in {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
+    "${mod}/services/forgejo.nix"
   ];
 
   boot.tmp.cleanOnBoot = true;
