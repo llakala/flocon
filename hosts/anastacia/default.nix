@@ -4,7 +4,9 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
+
     "${mod}/services/forgejo.nix"
+    "${mod}/services/searx.nix"
   ];
 
   boot.tmp.cleanOnBoot = true;
