@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: let
@@ -21,7 +20,7 @@ in {
           DOMAIN = "git.nezia.dev";
           HTTP_PORT = 1849;
           ROOT_URL = "https://${srv.DOMAIN}/";
-          HTTP_ADDR = "::1";
+          HTTP_ADDR = "localhost";
         };
         service = {
           DISABLE_REGISTRATION = true;
@@ -35,7 +34,7 @@ in {
     caddy = {
       enable = true;
       virtualHosts."git.nezia.dev".extraConfig = ''
-        reverse_proxy * [::1]:${toString srv.HTTP_PORT}
+        reverse_proxy * localhost:${toString srv.HTTP_PORT}
       '';
     };
   };
