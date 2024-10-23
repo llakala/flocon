@@ -81,7 +81,7 @@ in {
               urls = [
                 {
                   rels = ["results"];
-                  template = "https://searx.tiekoetter.com/search";
+                  template = "https://search.nezia.dev/search";
                   params = [
                     {
                       name = "q";
@@ -91,7 +91,7 @@ in {
                 }
                 {
                   rels = ["suggestions"];
-                  template = "https://searx.tiekoetter.com/autocompleter";
+                  template = "https://search.nezia.dev/autocompleter";
                   params = [
                     {
                       name = "q";
@@ -101,7 +101,7 @@ in {
                   "type" = "application/x-suggestions+json";
                 }
               ];
-              iconUpdateURL = "https://searx.tiekoetter.com/favicon.ico";
+              iconUpdateURL = "https://search.nezia.dev/favicon.ico";
               updateInterval = 24 * 60 * 60 * 1000;
               definedAliases = ["@s"];
             };
