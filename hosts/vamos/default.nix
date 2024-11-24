@@ -35,6 +35,7 @@ in {
 
       "${home}/programs/niri"
       "${home}/programs/waybar"
+      "${home}/services/swaync.nix"
       "${home}/programs/fuzzel.nix"
       "${home}/programs/swaybg.nix"
       "${home}/programs/swaylock.nix"

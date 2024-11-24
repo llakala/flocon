@@ -88,7 +88,8 @@ in {
       #network,
       #pulseaudio,
       #tray,
-      #power-profiles-daemon {
+      #power-profiles-daemon
+      {
         padding: 0 0.5em;
       }
 
@@ -101,6 +102,10 @@ in {
       #custom-power {
         padding: 0 1.2em;
         color: @base08;
+      }
+
+      #custom-notification {
+        padding: 0 1.2em;
       }
     '';
 }
