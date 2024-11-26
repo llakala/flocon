@@ -1,16 +1,22 @@
 {
   pkgs,
   lib,
+  lib',
   osConfig,
   config,
   ...
 }: let
-  inherit (lib) getExe mkMerge mkIf;
+  inherit (lib) getExe mkMerge mkIf optionalString;
+  inherit (lib') generateGtkColors;
+  inherit (osConfig.theme.scheme) palette;
+  inherit (builtins) readFile;
 in {
-  imports = [./style.nix];
   programs.waybar = {
     enable = true;
     systemd.enable = true;
+    style =
+      optionalString osConfig.theme.enable generateGtkColors lib palette
+      + readFile ./style.css;
     settings = {
       mainBar = mkMerge [
         {
