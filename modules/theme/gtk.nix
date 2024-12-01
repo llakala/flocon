@@ -6,13 +6,17 @@
   ...
 }: let
   inherit (builtins) pathExists;
-  inherit (lib) mkIf mkOption mkEnableOption;
-  inherit (lib.types) package str;
+  inherit (lib) mkIf mkOption;
+  inherit (lib.types) bool package str;
 
   cfg = config.theme.gtk;
 in {
   options.theme.gtk = {
-    enable = mkEnableOption "enable GTK theming options";
+    enable = mkOption {
+      type = bool;
+      description = "enable GTK theming options";
+      default = config.theme.enable;
+    };
     theme = {
       name = mkOption {
         type = str;
@@ -31,24 +35,22 @@ in {
         };
       };
     };
+
     iconTheme = {
       name = mkOption {
         type = str;
         description = "The name for the icon theme that will be used for GTK programs";
-        default = "Papirus-Dark";
+        default = "kora";
       };
-
       package = mkOption {
         type = package;
         description = "The GTK icon theme to be used";
-        default = pkgs.catppuccin-papirus-folders.override {
-          accent = "lavender";
-          flavor = "macchiato";
-        };
+        default = pkgs.kora-icon-theme;
       };
     };
   };
-  config = {
+
+  config = mkIf cfg.enable {
     assertions = [
       (let
         themePath = cfg.theme.package + /share/themes + "/${cfg.theme.name}";
