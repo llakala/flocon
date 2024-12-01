@@ -65,23 +65,8 @@ in {
       home-manager.users.nezia = {
         home.pointerCursor = {
           inherit (config.theme.cursorTheme) name package size;
-        };
-
-        gtk = {
-          iconTheme = {
-            inherit (config.theme.gtk.iconTheme) name package;
-          };
-
-          theme = lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) {
-            inherit (config.theme.gtk.theme) name package;
-          };
-
-          gtk3.extraConfig = {
-            gtk-application-prefer-dark-theme =
-              if scheme.variant == "dark"
-              then "1"
-              else "0";
-          };
+          gtk.enable = true;
+          x11.enable = true;
         };
 
         services.swaync.style =
