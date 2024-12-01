@@ -6,6 +6,7 @@
     nixpkgs,
     systems,
     agenix,
+    ags,
     deploy-rs,
     treefmt-nix,
     ...
@@ -20,6 +21,11 @@
           pkgs.git
           deploy-rs.packages.${pkgs.system}.default
           agenix.packages.${pkgs.system}.default
+          (ags.packages.${pkgs.system}.default.override {
+            extraPackages = [
+              ags.packages.${pkgs.system}.astal3
+            ];
+          })
         ];
       };
     });
@@ -50,6 +56,10 @@
     # other
     agenix = {
       url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ags = {
+      url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     basix.url = "github:notashelf/basix";
