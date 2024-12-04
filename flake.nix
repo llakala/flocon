@@ -24,6 +24,7 @@
           (ags.packages.${pkgs.system}.default.override {
             extraPackages = [
               ags.packages.${pkgs.system}.astal3
+              ags.packages.${pkgs.system}.battery
             ];
           })
         ];
