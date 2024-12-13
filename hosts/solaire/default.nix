@@ -20,6 +20,7 @@ in {
     "${system}/services/greetd.nix"
 
     "${system}/programs/niri"
+    "${system}/programs/hyprland.nix"
     "${system}/services/gnome.nix"
 
     "${system}/services/documentation.nix"
