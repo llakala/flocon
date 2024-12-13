@@ -639,6 +639,26 @@
         "type": "github"
       }
     },
+    "hyprwm-contrib": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733056338,
+        "narHash": "sha256-sp14z0mrqrtmouz1+bU4Jh8/0xi+xwQHF2l7mhGSSVU=",
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "rev": "d7c55140f1785b8d9fef351f1cd2a4c9e1eaa466",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -3204,6 +3224,7 @@
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
+        "hyprwm-contrib": "hyprwm-contrib",
         "lanzaboote": "lanzaboote",
         "niri": "niri",
         "nix-flatpak": "nix-flatpak",

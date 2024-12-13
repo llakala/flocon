@@ -59,6 +59,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprwm-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     niri.url = "github:sodiboo/niri-flake";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.0";
     nvf.url = "github:notashelf/nvf";
