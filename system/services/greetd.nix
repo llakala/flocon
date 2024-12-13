@@ -41,5 +41,10 @@ in {
     };
   };
   environment.etc."greetd/environments".text = concatStringsSep "\n" ["Hyprland"];
-  security.pam.services.greetd.fprintAuth = false;
+
+  security.pam.services = {
+    greetd.enableGnomeKeyring = true;
+    login.enableGnomeKeyring = true;
+    greetd.fprintAuth = false;
+  };
 }
