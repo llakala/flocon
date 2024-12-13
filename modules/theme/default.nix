@@ -21,8 +21,8 @@ in {
         Name of the tinted-theming color scheme to use.
       '';
       type = enum (attrNames inputs.basix.schemeData.base16);
-      example = "rose-pine";
-      default = "rose-pine";
+      example = "catppuccin-mocha";
+      default = "catppuccin-mocha";
     };
 
     wallpaper = mkOption {
@@ -42,14 +42,14 @@ in {
         description = ''
           Name of the cursor theme.
         '';
-        default = "BreezeX-RosePine-Linux";
+        default = "Bibata-Modern-Ice";
       };
       package = mkOption {
         type = package;
         description = ''
           Package providing the cursor theme.
         '';
-        default = pkgs.rose-pine-cursor;
+        default = pkgs.bibata-cursors;
       };
       size = mkOption {
         description = ''
