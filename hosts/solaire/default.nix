@@ -19,7 +19,6 @@ in {
     "${system}/services/logind.nix"
     "${system}/services/greetd.nix"
 
-    "${system}/programs/niri"
     "${system}/programs/hyprland.nix"
     "${system}/services/gnome.nix"
 
@@ -34,14 +33,13 @@ in {
       "${home}/services/udiskie.nix"
       "${home}/programs/games"
 
-      "${home}/programs/niri"
       "${home}/programs/waybar"
       "${home}/programs/fuzzel.nix"
+      "${home}/programs/hypr"
 
       "${home}/services/swaync"
       "${home}/programs/swaybg.nix"
       "${home}/programs/swaylock.nix"
-      "${home}/programs/swayidle.nix"
 
       "${home}/terminal/emulators/foot.nix"
 
