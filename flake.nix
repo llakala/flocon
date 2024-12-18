@@ -4,13 +4,12 @@
   outputs = {
     self,
     nixpkgs,
-    systems,
     agenix,
     deploy-rs,
     treefmt-nix,
     ...
   } @ inputs: let
-    eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+    eachSystem = f: nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (system: f nixpkgs.legacyPackages.${system});
     treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
   in {
     devShells = eachSystem (pkgs: {
@@ -32,7 +31,6 @@
   inputs = {
     # nix related
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    systems.url = "github:nix-systems/default-linux";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
