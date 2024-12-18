@@ -24,7 +24,7 @@
     });
     formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
     nixosConfigurations = import ./hosts {inherit inputs;};
-    packages = eachSystem (pkgs: import ./pkgs {inherit inputs pkgs;});
+    packages = eachSystem (pkgs: import ./shared/pkgs {inherit inputs pkgs;});
     deploy.nodes = import ./nodes {inherit inputs;};
     checks = builtins.mapAttrs (_: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
   };
