@@ -7,7 +7,7 @@
   ...
 }: let
   inherit (lib) attrNames mkEnableOption mkOption pathExists;
-  inherit (lib.types) bool enum package path str;
+  inherit (lib.types) attrs bool enum package path str;
 
   cfg = config.local.style;
 in {
@@ -22,6 +22,13 @@ in {
       default = "catppuccin-mocha";
     };
 
+    scheme = mkOption {
+      description = ''
+        Computed scheme from `config.local.style.schemeName`.
+      '';
+      type = attrs;
+      readOnly = true;
+    };
     wallpaper = mkOption {
       description = ''
         Location of the wallpaper that will be used throughout the system.
@@ -125,5 +132,7 @@ in {
         '';
       }
     ];
+
+    local.style.scheme = inputs.basix.schemeData.base16.${cfg.schemeName};
   };
 }
