@@ -25,7 +25,6 @@ in {
     "${nixos}/hardware/uni-sync.nix"
 
     "${nixos}/programs/games.nix"
-    "${nixos}/hardware/nvidia.nix"
 
     "${nixos}/services/logind.nix"
     "${nixos}/services/greetd.nix"
