@@ -6,6 +6,15 @@
   system = "${inputs.self}/system";
   home = "${inputs.self}/home";
 in {
+  local.systemVars = {
+    hostName = "solaire";
+    username = "nezia";
+  };
+
+  local.homeVars = {
+    fullName = "Anthony Rodriguez";
+    email = "anthony@nezia.dev";
+  };
   imports = [
     ./hardware-configuration.nix
     ./modules
@@ -29,7 +38,7 @@ in {
 
   home-manager = {
     users.nezia.imports = [
-      "${home}"
+      home
       "${home}/services/udiskie.nix"
       "${home}/programs/games"
 
@@ -51,6 +60,5 @@ in {
     extraSpecialArgs = specialArgs;
   };
 
-  networking.hostName = "solaire";
   environment.variables.FLAKE = "/home/nezia/.dotfiles";
 }
