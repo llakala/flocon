@@ -1,5 +1,6 @@
-{
+{config, ...}: {
   networking = {
+    inherit (config.local.systemVars) hostName;
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
