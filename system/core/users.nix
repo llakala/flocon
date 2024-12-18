@@ -1,7 +1,7 @@
-{
-  users.users.nezia = {
+{config, ...}: {
+  users.users.${config.local.systemVars.username} = {
     isNormalUser = true;
-    description = "Anthony Rodriguez";
+    description = config.local.homeVars.fullName or "User";
     extraGroups = [
       "networkmanager"
       "audio"
