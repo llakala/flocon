@@ -21,12 +21,14 @@ in {
     mkIf
     cfg.enable
     {
-      home-manager.users.${config.local.systemVars.username} = {
-        home.pointerCursor = {
-          inherit (cfg.cursorTheme) name package size;
-          x11.enable = true;
-          gtk.enable = true;
-        };
-      };
+      home-manager.sharedModules = [
+        {
+          home.pointerCursor = {
+            inherit (cfg.cursorTheme) name package size;
+            x11.enable = true;
+            gtk.enable = true;
+          };
+        }
+      ];
     };
 }
