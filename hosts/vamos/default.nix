@@ -18,7 +18,7 @@ in {
 
   imports = [
     ./hardware-configuration.nix
-    ./modules
+    ./config/theme.nix
 
     "${nixos}"
     "${nixos}/core/lanzaboote.nix"

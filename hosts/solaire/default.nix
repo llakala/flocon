@@ -18,7 +18,8 @@ in {
 
   imports = [
     ./hardware-configuration.nix
-    ./modules
+    ./config/nvidia.nix
+    ./config/theme.nix
 
     nixos
     "${nixos}/hardware/uni-sync.nix"
