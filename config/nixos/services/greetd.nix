@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -36,7 +37,7 @@ in {
     settings = {
       default_session = {
         command = "${Hyprland} --config ${hyprlandConfig}";
-        user = "nezia";
+        user = config.local.systemVars.username;
       };
     };
   };

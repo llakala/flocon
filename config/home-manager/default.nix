@@ -1,12 +1,12 @@
-{
+{osConfig, ...}: {
   imports = [
     ./services/udiskie.nix
     ./terminal
     ./programs
   ];
-  home = {
-    username = "nezia";
-    homeDirectory = "/home/nezia";
+  home = rec {
+    inherit (osConfig.local.systemVars) username;
+    homeDirectory = "/home/${username}";
     stateVersion = "24.05";
   };
 

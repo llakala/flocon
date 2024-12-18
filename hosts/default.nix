@@ -1,9 +1,9 @@
 {inputs, ...}: let
-  lib' = import ../lib;
+  lib' = import ../shared/lib;
   mkSystem = args:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs lib';};
-      modules = [../modules] ++ args.modules;
+      modules = [../shared/nixosModules] ++ (args.modules or []);
     };
 in {
   vamos = mkSystem {
