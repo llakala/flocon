@@ -26,7 +26,7 @@
         color-scheme = "prefer-dark";
       };
       "org/gnome/desktop/background" = {
-        picture-uri-dark = "file://" + builtins.toString osConfig.theme.wallpaper;
+        picture-uri-dark = "file://" + builtins.toString osConfig.local.style.wallpaper;
       };
 
       "org/gnome/desktop/search-providers" = {

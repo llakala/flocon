@@ -2,6 +2,6 @@
   imports = [
     ./systemVars.nix
     ./homeVars.nix
-    ./theme
+    ./style
   ];
 }

@@ -3,82 +3,29 @@
   config,
   lib,
   lib',
-  pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption mkIf attrNames;
+  inherit (lib) mkIf;
   inherit (lib.strings) removePrefix;
-  inherit (lib.types) path package enum;
 
   inherit (lib') generateGtkColors;
 
-  cfg = config.theme;
+  cfg = config.local.style;
 in {
   imports = [
     ./gtk.nix
+    ./options.nix
     inputs.niri.nixosModules.niri
     inputs.hyprland.nixosModules.default
   ];
-  options.theme = {
-    enable = mkEnableOption "theme";
-    schemeName = mkOption {
-      description = ''
-        Name of the tinted-theming color scheme to use.
-      '';
-      type = enum (attrNames inputs.basix.schemeData.base16);
-      example = "catppuccin-mocha";
-      default = "catppuccin-mocha";
-    };
-
-    wallpaper = mkOption {
-      description = ''
-        Location of the wallpaper that will be used throughout the system.
-      '';
-      type = path;
-      example = lib.literalExpression "./wallpaper.png";
-      default = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/e0cf0eb237dc5baba86661a3572b20a6183c1876/wallpapers/nix-wallpaper-nineish-catppuccin-frappe.png?raw=true";
-        hash = "sha256-/HAtpGwLxjNfJvX5/4YZfM8jPNStaM3gisK8+ImRmQ4=";
-      };
-    };
-
-    cursorTheme = {
-      name = mkOption {
-        description = ''
-          Name of the cursor theme.
-        '';
-        default = "phinger-cursors-dark";
-      };
-      package = mkOption {
-        type = package;
-        description = ''
-          Package providing the cursor theme.
-        '';
-        default = pkgs.phinger-cursors;
-      };
-      size = mkOption {
-        description = ''
-          Size of the cursor.
-        '';
-        default = 32;
-      };
-    };
-
-    avatar = mkOption {
-      description = ''
-        Path to an avatar image (used for hyprlock).
-      '';
-      default = ../../../assets/avatar.png; # TODO silly, change this
-    };
-  };
   config = let
-    scheme = inputs.basix.schemeData.base16.${config.theme.schemeName};
+    scheme = inputs.basix.schemeData.base16.${cfg.schemeName};
   in
     mkIf cfg.enable
     {
-      home-manager.users.nezia = {
+      home-manager.users.${config.local.systemVars.username} = {
         home.pointerCursor = {
-          inherit (config.theme.cursorTheme) name package size;
+          inherit (cfg.cursorTheme) name package size;
           x11.enable = true;
           gtk.enable = true;
         };
@@ -197,8 +144,8 @@ in {
             settings = {
               layout.focus-ring.active.color = scheme.palette.base0D;
               cursor = {
-                inherit (config.theme.cursorTheme) size;
-                theme = config.theme.cursorTheme.name;
+                inherit (cfg.cursorTheme) size;
+                theme = cfg.cursorTheme.name;
               };
             };
           };
@@ -670,6 +617,7 @@ in {
               stroke: var(--wave-color-solid-rainbow-purple-fill) !important;
           }
         '';
+
         gtk = rec {
           gtk3.extraConfig = {
             gtk-application-prefer-dark-theme = scheme.variant == "dark";
