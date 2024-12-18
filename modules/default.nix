@@ -1,3 +1,7 @@
 {
-  imports = [./theme];
+  imports = [
+    ./systemVars.nix
+    ./homeVars.nix
+    ./theme
+  ];
 }
