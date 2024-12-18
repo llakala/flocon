@@ -6,6 +6,16 @@
   system = "${inputs.self}/system";
   home = "${inputs.self}/home";
 in {
+  local.systemVars = {
+    hostName = "vamos";
+    username = "nezia";
+  };
+
+  local.homeVars = {
+    fullName = "Anthony Rodriguez";
+    email = "anthony@nezia.dev";
+  };
+
   imports = [
     ./hardware-configuration.nix
     ./modules
@@ -50,6 +60,5 @@ in {
     extraSpecialArgs = specialArgs;
   };
 
-  networking.hostName = "vamos";
   environment.variables.FLAKE = "/home/nezia/.dotfiles";
 }
