@@ -12,7 +12,7 @@
 
   hyprlock = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
 in {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = lib.mkIf (config.local.systemVars.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [hypridle];
       files = {

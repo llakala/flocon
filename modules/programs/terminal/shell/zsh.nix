@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
   inherit (config.local.systemVars) username;
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.systemVars.desktop != "none") {
     programs.zsh.enable = true;
     hjem.users.${username} = {
       packages = [pkgs.zsh];

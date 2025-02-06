@@ -144,7 +144,7 @@
     };
   };
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = lib.mkIf (config.local.systemVars.desktop != "none") {
     hjem.users.${username} = {
       packages = [firefox];
       files = {

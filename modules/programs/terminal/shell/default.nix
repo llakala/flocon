@@ -14,7 +14,7 @@ in {
     ./zsh.nix
   ];
 
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.systemVars.desktop != "none") {
     users.users.${username}.shell = pkgs.zsh;
   };
 }

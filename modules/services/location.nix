@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = lib.mkIf (config.local.systemVars.desktop == "Hyprland") {
     location.provider = "geoclue2";
 
     services.geoclue2 = {

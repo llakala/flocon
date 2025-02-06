@@ -8,6 +8,7 @@ _: {
     systemVars = {
       hostName = "vamos";
       username = "nezia";
+      desktop = "Hyprland";
     };
 
     homeVars = {
@@ -17,12 +18,7 @@ _: {
     };
 
     profiles = {
-      desktop.enable = true;
       laptop.enable = true;
-    };
-
-    modules = {
-      hyprland.enable = true;
     };
   };
 }

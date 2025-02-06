@@ -4,23 +4,30 @@
   options,
   ...
 }: let
-  inherit (lib) mkIf mkOption;
+  inherit (lib) mkOption;
+  inherit (lib.modules) mkIf;
   inherit (lib.types) str;
 in {
   options.local.homeVars = {
     fullName = mkOption {
       type = str;
-      description = "your full name (used for git commits and user description)";
+      description = ''
+        your full name (used for git commits and user description)
+      '';
       default = "User";
     };
     email = mkOption {
       type = str;
-      description = "your email (used for git commits)";
+      description = ''
+        your email (used for git commits)
+      '';
       default = null;
     };
     signingKey = mkOption {
       type = str;
-      description = "your ssh public key (used for signing git commits)";
+      description = ''
+        your ssh public key (used for signing git commits)"
+      '';
     };
   };
 

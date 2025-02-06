@@ -11,7 +11,7 @@
   inherit (config.local.style) wallpaper;
   inherit (inputs.hyprpaper.packages.${pkgs.system}) hyprpaper;
 in {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = lib.mkIf (config.local.systemVars.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [hyprpaper];
       files = {

@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = lib.mkIf (config.local.systemVars.desktop != "none") {
     services.keyd = {
       enable = true;
       keyboards.default = {

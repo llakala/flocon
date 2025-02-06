@@ -45,7 +45,7 @@
     selection-foreground = colors.base05;
   };
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.systemVars.desktop != "none") {
     hjem.users.${username} = {
       files = mkMerge [
         {

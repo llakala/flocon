@@ -11,7 +11,7 @@ in {
 
   config.assertions = lib.mkIf config.local.profiles.server.enable [
     {
-      assertion = !config.local.profiles.desktop.enable;
+      assertion = !(config.local.systemVars.desktop != "none");
       message = "The server profile cannot be enabled if `local.profiles.desktop.enable` is set to true.";
     }
 

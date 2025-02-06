@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf;
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.systemVars.desktop != "none") {
     programs = {
       thunar = {
         enable = true;

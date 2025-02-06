@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (lib) optionalAttrs;
+  inherit (lib.modules) mkIf;
   inherit (config.local.systemVars) username;
 
   styleCfg = config.local.style;
@@ -38,7 +39,7 @@
     "21" = palette.base06;
   };
 in {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = mkIf (config.local.systemVars.desktop != "none") {
     hjem.users.${username} = {
       packages = [pkgs.foot];
       files = {

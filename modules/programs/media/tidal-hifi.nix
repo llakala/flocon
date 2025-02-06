@@ -7,7 +7,7 @@
   inherit (config.local.systemVars) username;
   styleCfg = config.local.style;
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = lib.mkIf (config.local.systemVars.desktop != "none") {
     hjem.users.${username} = {
       packages = [pkgs.tidal-hifi];
       files = {

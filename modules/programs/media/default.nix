@@ -11,7 +11,7 @@ in {
     ./zathura.nix
   ];
 
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = lib.mkIf (config.local.systemVars.desktop != "none") {
     hjem.users.${username}.packages = [
       pkgs.gnome-calculator
       pkgs.gthumb

@@ -8,7 +8,7 @@
   inherit (config.local.homeVars) signingKey;
   toINI = lib.generators.toINI {};
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = lib.mkIf (config.local.systemVars.desktop != "none") {
     hjem.users.${username} = {
       packages = with pkgs; [git lazygit];
       files = {

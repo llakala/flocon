@@ -4,10 +4,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.local.profiles) desktop;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.systemVars) desktop username;
 in {
-  config = mkIf desktop.enable {
+  config = mkIf (desktop != "none") {
     programs.nh = {
       enable = true;
       clean = {

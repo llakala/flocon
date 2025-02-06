@@ -4,7 +4,7 @@
   osConfig,
   ...
 }: {
-  config = lib.mkIf osConfig.local.profiles.desktop.enable {
+  config = lib.mkIf (osConfig.local.systemVars.desktop != "none") {
     programs.tmux = {
       enable = true;
       prefix = "C-space";

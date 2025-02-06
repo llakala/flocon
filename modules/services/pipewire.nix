@@ -8,7 +8,7 @@
     inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = lib.mkIf (config.local.systemVars.desktop != "none") {
     services = {
       pulseaudio.enable = false;
       pipewire = {

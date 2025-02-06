@@ -22,7 +22,7 @@
     ];
   } (builtins.readFile ./krisp-patcher.py);
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.systemVars.desktop != "none") {
     hjem.users.${username} = {
       packages = [discord krisp-patcher];
       files.".config/Vencord/themes/midnight-base16.css".text = with styleCfg.scheme.palette;

@@ -14,7 +14,7 @@
   styleCfg = config.local.style;
   rgbaPalette = builtins.mapAttrs (_: c: (lib'.rgba c 1)) styleCfg.scheme.palette;
 in {
-  config = mkIf config.local.modules.hyprland.enable {
+  config = mkIf (config.local.systemVars.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [hyprlock];
       files = {

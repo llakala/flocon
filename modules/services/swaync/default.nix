@@ -9,7 +9,7 @@
   inherit (config.local.systemVars) username;
   inherit (lib') generateGtkColors;
 in {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = lib.mkIf (config.local.systemVars.desktop == "Hyprland") {
     hjem.users.${username} = {
       files = {
         ".config/swaync/config.json".text = toJSON {

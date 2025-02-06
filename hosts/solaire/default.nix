@@ -5,6 +5,7 @@ _: {
     systemVars = {
       hostName = "solaire";
       username = "nezia";
+      desktop = "Hyprland";
     };
     homeVars = {
       fullName = "Anthony Rodriguez";
@@ -13,12 +14,10 @@ _: {
     };
 
     profiles = {
-      desktop.enable = true;
       gaming.enable = true;
     };
 
     modules = {
-      hyprland.enable = true;
       nvidia.enable = true;
     };
   };

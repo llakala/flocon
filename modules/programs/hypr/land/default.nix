@@ -29,7 +29,7 @@
       '';
   });
 in {
-  config = mkIf config.local.modules.hyprland.enable {
+  config = mkIf (config.local.systemVars.desktop == "Hyprland") {
     programs.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;

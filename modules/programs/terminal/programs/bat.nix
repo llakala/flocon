@@ -9,7 +9,7 @@
     builtins.concatStringsSep "\n"
     (lib.mapAttrsToList (option: value: "--${option}=\"${value}\"") attrs);
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = lib.mkIf (config.local.systemVars.desktop != "none") {
     hjem.users.${username} = {
       packages = [
         pkgs.bat

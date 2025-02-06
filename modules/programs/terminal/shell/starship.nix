@@ -7,7 +7,7 @@
   inherit (config.local.systemVars) username;
   toTOML = (pkgs.formats.toml {}).generate;
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = lib.mkIf (config.local.systemVars.desktop != "none") {
     hjem.users.${username} = {
       packages = [pkgs.starship];
       files = {

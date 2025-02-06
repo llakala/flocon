@@ -49,8 +49,7 @@ let
       };
   });
 in {
-  # TODO: perhaps turn this into a more generic module if we wanna use other wayland compositors
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = lib.mkIf (config.local.systemVars.desktop == "Hyprland") {
     services.greetd = {
       enable = true;
       settings = {

@@ -4,14 +4,13 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.systemVars) desktop username;
   inherit (config.local.homeVars) fullName;
-  inherit (config.local.profiles) desktop;
 in {
   users.users.${username} = {
     isNormalUser = true;
     description = fullName;
-    extraGroups = mkIf desktop.enable [
+    extraGroups = mkIf (desktop != "none") [
       "networkmanager"
       "audio"
       "video"
@@ -20,7 +19,7 @@ in {
     ];
   };
 
-  hjem = mkIf desktop.enable {
+  hjem = mkIf (desktop != "none") {
     clobberByDefault = true;
     users.${username} = {
       enable = true;

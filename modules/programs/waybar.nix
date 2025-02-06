@@ -10,7 +10,7 @@
   styleCfg = config.local.style;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
 in {
-  config = mkIf config.local.modules.hyprland.enable {
+  config = mkIf (config.local.systemVars.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [
         pkgs.waybar
